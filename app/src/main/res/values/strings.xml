@@ -7,5 +7,5 @@
     <string name="textGameName">Animal Crossing: New Horizons</string>
     <string name="textContentDescriptionSaveIcon">icone de coração branco</string>
     <string name="textContentDescriptionEmptySaveIcon">icone de coração branco vazado</string>
-    <string name="textGameDescription"><![CDATA[Animal Crossing: New Horizons é um jogo eletrônico de simulação social desenvolvido pela Nintendo Entertainment Planning & Development e publicado pela Nintendo. Foi lançado em 20 de março de 2020 para Nintendo Switch, sendo o quinto título principal da série Animal Crossing.]]></string>
+    <string name="textGameDescription">Animal Crossing: New Horizons é um jogo eletrônico de simulação social desenvolvido pela Nintendo Entertainment Planning &amp; Development e publicado pela Nintendo. Foi lançado em 20 de março de 2020 para Nintendo Switch, sendo o quinto título principal da série Animal Crossing.</string>
 </resources>

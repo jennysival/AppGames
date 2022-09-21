@@ -1,8 +1,9 @@
-package br.com.jenny.appgames
+package br.com.jenny.appgames.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
+import br.com.jenny.appgames.R
 import br.com.jenny.appgames.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
