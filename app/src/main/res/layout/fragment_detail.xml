@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".DetailFragment">
+
+    <ImageView
+        android:id="@+id/ivGameDetail"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size250"
+        android:src="@drawable/acnh"
+        android:contentDescription="@string/textContentDescription"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvGameNameDetail"
+        android:layout_width="@dimen/size0"
+        android:layout_height="wrap_content"
+        android:text="@string/textGameName"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="@dimen/fontSize16"
+        android:textAlignment="textStart"
+        android:layout_margin="@dimen/margin16"
+        app:layout_constraintTop_toBottomOf="@id/ivGameDetail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/iconSave"
+        app:layout_constraintBottom_toTopOf="@id/tvGameDescriptionDetail"/>
+
+    <TextView
+        android:id="@+id/tvGameDescriptionDetail"
+        android:layout_width="@dimen/size0"
+        android:layout_height="wrap_content"
+        android:text="@string/textGameDescription"
+        android:textColor="@color/white"
+        android:textSize="@dimen/fontSize14"
+        android:textAlignment="textStart"
+        android:layout_margin="@dimen/margin16"
+        app:layout_constraintTop_toBottomOf="@id/iconSave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/iconSave" />
+
+    <ImageView
+        android:id="@+id/iconSave"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="@dimen/margin16"
+        android:src="@drawable/ic_baseline_favorite_border_24"
+        android:contentDescription="@string/textContentDescriptionEmptySaveIcon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivGameDetail"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
