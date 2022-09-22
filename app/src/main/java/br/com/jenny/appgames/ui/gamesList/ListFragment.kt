@@ -37,8 +37,8 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.getAllGamesNetwork(1, 20)
         initObserver()
-        viewModel.getAllGamesNetwork(1, 10)
         setUpRecyclerView()
         setUpSavedButton()
     }
