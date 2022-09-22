@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import br.com.jenny.appgames.data.model.GameResult
 
-@Database(entities = [GameResult::class], version = 1)
+@Database(entities = [GameResult::class], version = 5)
 abstract class GamesDatabase: RoomDatabase() {
     abstract fun gamesDao(): GamesDao
 

@@ -20,7 +20,7 @@ interface GamesAPI {
         pageSize: Int,
 
         @Query("ordering")
-        ordering: String = "rating"
+        ordering: String = "name"
 
     ): GamesResponse
 }
