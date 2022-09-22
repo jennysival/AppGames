@@ -17,7 +17,10 @@ class SavedListViewModel(application: Application): AndroidViewModel(application
     private val _savedListState = MutableLiveData<ViewState<List<GameResult>>>()
     val savedListState: LiveData<ViewState<List<GameResult>>> = _savedListState
 
+    val loading = MutableLiveData<ViewState<Boolean>>()
+
     fun getSavedGames(){
+        loading.value = ViewState.Loading(true)
         viewModelScope.launch {
             try {
                 val response = withContext(Dispatchers.IO){
@@ -26,6 +29,8 @@ class SavedListViewModel(application: Application): AndroidViewModel(application
                 _savedListState.value = response
             }catch (e: Exception){
                 _savedListState.value = ViewState.Error(Exception("Não foi possível carregar os jogos salvos"))
+            }finally {
+                loading.value = ViewState.Loading(false)
             }
         }
     }
