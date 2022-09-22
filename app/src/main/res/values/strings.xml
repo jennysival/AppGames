@@ -3,6 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_app">RAWG Games</string>
+    <string name="title_saved">Jogos Salvos</string>
     <string name="textContentDescription">Imagem do jogo Animal Crossing New Horizons</string>
     <string name="textGameName">Animal Crossing: New Horizons</string>
     <string name="textContentDescriptionSaveIcon">icone de coração branco</string>
