@@ -31,13 +31,13 @@
         app:layout_constraintTop_toBottomOf="@id/ivGameDetail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/iconSave"
-        app:layout_constraintBottom_toTopOf="@id/tvGameDescriptionDetail"/>
+        app:layout_constraintBottom_toTopOf="@id/tvGameReleaseDetail"/>
 
     <TextView
-        android:id="@+id/tvGameDescriptionDetail"
+        android:id="@+id/tvGameReleaseDetail"
         android:layout_width="@dimen/size0"
         android:layout_height="wrap_content"
-        android:text="@string/textGameDescription"
+        android:text="@string/textReleaseGameDetail"
         android:textColor="@color/white"
         android:textSize="@dimen/fontSize14"
         android:textAlignment="textStart"
