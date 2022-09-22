@@ -16,7 +16,7 @@ class ListViewModel(application: Application): AndroidViewModel(application) {
 
     private val usecase = GamesUseCase(application)
 
-    private var _gamesListState = MutableLiveData<ViewState<List<GameResult>>>()
+    private val _gamesListState = MutableLiveData<ViewState<List<GameResult>>>()
     val gamesListState: LiveData<ViewState<List<GameResult>>> = _gamesListState
 
     fun getAllGamesNetwork(page: Int, pageSize: Int){

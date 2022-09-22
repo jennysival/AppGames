@@ -9,9 +9,18 @@ interface GamesAPI {
 
     @GET("games")
     suspend fun getGamesNetwork(
-        @Query("key") apiKey: String = API_KEY,
-        @Query("page") page: Int,
-        @Query("page_size") pageSize: Int
-    ): GamesResponse
 
+        @Query("key")
+        apiKey: String = API_KEY,
+
+        @Query("page")
+        page: Int,
+
+        @Query("page_size")
+        pageSize: Int,
+
+        @Query("ordering")
+        ordering: String = "rating"
+
+    ): GamesResponse
 }

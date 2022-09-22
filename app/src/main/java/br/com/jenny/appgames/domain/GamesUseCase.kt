@@ -12,8 +12,8 @@ class GamesUseCase(application: Application) {
 
     suspend fun getAllGamesNetwork(page: Int, pageSize: Int): ViewState<List<GameResult>>{
         return try {
-            val games = repository.getAllGamesNetwork(page = page, pageSize = pageSize)
-            repository.insertAllGamesDao(games.gameResults)
+            val gamesResponse = repository.getAllGamesNetwork(page = page, pageSize = pageSize)
+            repository.insertAllGamesDao(gamesResponse.gameResults)
             getAllGamesDao()
         }catch (e: Exception){
             getAllGamesDao()

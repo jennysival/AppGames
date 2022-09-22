@@ -14,8 +14,9 @@ class GamesListAdapter(
 
     class ViewHolder(val binding: GameItemBinding): RecyclerView.ViewHolder(binding.root){
         fun showGame(game: GameResult){
+            var name = game.name
+            binding.tvGameName.text = name
             Picasso.get().load(game.backgroundImage).into(binding.ivGame)
-            binding.tvGameName.text = game.name
         }
     }
 
