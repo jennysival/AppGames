@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -62,6 +64,16 @@ class SavedListFragment : Fragment() {
                 is ViewState.Error -> {
                     Toast.makeText(context, "${it.throwable.message}", Toast.LENGTH_LONG).show()
                 }
+                else -> {}
+            }
+        }
+
+        viewModel.loading.observe(this.viewLifecycleOwner){
+            when(it){
+                is ViewState.Loading -> {
+                    binding.pbLoad.isVisible = it.loading == true
+                }
+                else -> {}
             }
         }
     }

@@ -19,7 +19,10 @@ class ListViewModel(application: Application): AndroidViewModel(application) {
     private val _gamesListState = MutableLiveData<ViewState<List<GameResult>>>()
     val gamesListState: LiveData<ViewState<List<GameResult>>> = _gamesListState
 
+    val loading = MutableLiveData<ViewState<Boolean>>()
+
     fun getAllGamesNetwork(page: Int, pageSize: Int){
+        loading.value = ViewState.Loading(true)
         viewModelScope.launch {
             try {
                 val response = withContext(Dispatchers.IO){
@@ -28,6 +31,8 @@ class ListViewModel(application: Application): AndroidViewModel(application) {
                 _gamesListState.value = response
             }catch (e: Exception){
                 _gamesListState.value = ViewState.Error(Throwable("Não foi possível carregar a lista"))
+            }finally {
+                loading.value = ViewState.Loading(false)
             }
         }
     }

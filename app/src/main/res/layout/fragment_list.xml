@@ -27,11 +27,20 @@
         android:src="@drawable/ic_baseline_favorite_24"
         android:contentDescription="@string/textContentDescriptionSaveIcon"
         android:scaleType="center"
-        android:backgroundTint="@color/purple_700"
+        android:backgroundTint="@color/purple_500"
         app:maxImageSize="@dimen/size40"
         app:tint="@color/white"
         app:borderWidth="@dimen/border0"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/pbLoad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
 
