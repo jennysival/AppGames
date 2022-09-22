@@ -26,5 +26,9 @@
         android:id="@+id/savedListFragment"
         android:name="br.com.jenny.appgames.ui.savedGamesList.SavedListFragment"
         android:label="fragment_saved_list"
-        tools:layout="@layout/fragment_saved_list" />
+        tools:layout="@layout/fragment_saved_list" >
+        <action
+            android:id="@+id/action_savedListFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 </navigation>
