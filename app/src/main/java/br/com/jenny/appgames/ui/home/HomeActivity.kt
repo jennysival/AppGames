@@ -2,6 +2,7 @@ package br.com.jenny.appgames.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.navigation.fragment.NavHostFragment
 import br.com.jenny.appgames.R
 import br.com.jenny.appgames.databinding.ActivityHomeBinding
@@ -23,6 +24,15 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setActionBar(){
-        supportActionBar?.setTitle(R.string.title_gameX)
+        supportActionBar?.setTitle(R.string.title_app)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            onBackPressed()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

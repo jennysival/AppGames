@@ -3,11 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/codeJenny/AppGames/app/src/main/res/layout/activity_home.xml" value="0.1" />
-        <entry key="..\:/codeJenny/AppGames/app/src/main/res/layout/fragment_detail.xml" value="0.22826086956521738" />
-        <entry key="..\:/codeJenny/AppGames/app/src/main/res/layout/fragment_list.xml" value="0.22826086956521738" />
-        <entry key="..\:/codeJenny/AppGames/app/src/main/res/layout/fragment_saved_list.xml" value="0.22826086956521738" />
-        <entry key="..\:/codeJenny/AppGames/app/src/main/res/layout/game_item.xml" value="0.22826086956521738" />
+        <entry key="..\:/codeJenny/AppGames/app/src/main/res/layout/fragment_detail.xml" value="0.264" />
       </map>
     </option>
   </component>

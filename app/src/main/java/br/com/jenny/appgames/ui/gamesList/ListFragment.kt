@@ -14,6 +14,7 @@ import br.com.jenny.appgames.R
 import br.com.jenny.appgames.data.model.GameResult
 import br.com.jenny.appgames.databinding.FragmentListBinding
 import br.com.jenny.appgames.state.ViewState
+import br.com.jenny.appgames.ui.home.HomeActivity
 import br.com.jenny.appgames.utils.GAME_KEY
 
 class ListFragment : Fragment() {
@@ -37,10 +38,16 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setUpActionBar()
         viewModel.getAllGamesNetwork(1, 20)
         initObserver()
         setUpRecyclerView()
         setUpSavedButton()
+    }
+
+    private fun setUpActionBar(){
+        (activity as HomeActivity).supportActionBar?.title = getString(R.string.title_app)
+        (activity as HomeActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
     private fun initObserver() {
