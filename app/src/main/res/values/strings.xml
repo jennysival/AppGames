@@ -14,4 +14,5 @@
     <string name="txtErrorLoadSavedGames">Não foi possível carregar os jogos salvos</string>
     <string name="txtErrorUpdateGame">Não foi possível atualizar o jogo</string>
     <string name="txtErrorSaveGame">Não foi possível salvar o jogo</string>
+    <string name="txtErrorDeleteGame">Não foi possível excluir o jogo</string>
 </resources>

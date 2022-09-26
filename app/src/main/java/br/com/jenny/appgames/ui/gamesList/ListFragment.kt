@@ -85,6 +85,8 @@ class ListFragment : Fragment() {
         binding.rvGamesList.layoutManager = LinearLayoutManager(context)
     }
 
+
+
     private fun goToGameDetail(game: GameResult) {
         val bundle = bundleOf(GAME_KEY to game)
         NavHostFragment.findNavController(this)

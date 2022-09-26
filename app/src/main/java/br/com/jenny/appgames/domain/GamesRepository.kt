@@ -11,10 +11,12 @@ class GamesRepository(private val gamesDao: GamesDao) {
         return RetrofitService.apiService.getGamesNetwork(page = page, pageSize = pageSize)
     }
 
-    suspend fun getAllGamesDao(): List<GameResult> = gamesDao.getAllGamesDao()
+    suspend fun insertSavedGameDao(game: GameResult){
+        gamesDao.insertSavedGameDao(game)
+    }
 
-    suspend fun insertAllGamesDao(gamesList: List<GameResult>){
-        gamesDao.insertAllGamesDao(gamesList)
+    suspend fun deleteSavedGameDao(game: GameResult){
+        gamesDao.deleteSavedGame(game)
     }
 
     suspend fun getSavedGamesDao(): List<GameResult> = gamesDao.getSavedGamesDao()

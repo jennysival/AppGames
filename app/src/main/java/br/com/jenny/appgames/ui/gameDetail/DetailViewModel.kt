@@ -19,6 +19,32 @@ class DetailViewModel(application: Application): AndroidViewModel(application) {
     private val _savedGameState = MutableLiveData<ViewState<GameResult>>()
     val savedGameState: LiveData<ViewState<GameResult>> = _savedGameState
 
+    fun insertSavedGame(game: GameResult){
+        viewModelScope.launch {
+            try {
+                val response = withContext(Dispatchers.IO){
+                    usecase.insertSavedGameDao(game)
+                }
+                _savedGameState.value = response
+            }catch (e: Exception){
+                _savedGameState.value = ViewState.Error(Exception(Resources.getSystem().getString(R.string.txtErrorSaveGame)))
+            }
+        }
+    }
+
+    fun deleteSavedGame(game: GameResult){
+        viewModelScope.launch {
+            try {
+                val response = withContext(Dispatchers.IO){
+                    usecase.deleteSavedGameDao(game)
+                }
+                _savedGameState.value = response
+            }catch (e: Exception){
+                _savedGameState.value = ViewState.Error(Exception(Resources.getSystem().getString(R.string.txtErrorDeleteGame)))
+            }
+        }
+    }
+
     fun updateSavedGame(game: GameResult){
         viewModelScope.launch {
             try {

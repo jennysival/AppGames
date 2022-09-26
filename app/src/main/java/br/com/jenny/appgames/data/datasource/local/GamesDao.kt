@@ -7,10 +7,10 @@ import br.com.jenny.appgames.data.model.GameResult
 interface GamesDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAllGamesDao(gamesList: List<GameResult>)
+    fun insertSavedGameDao(games: GameResult)
 
-    @Query("SELECT * FROM games_table")
-    fun getAllGamesDao(): List<GameResult>
+    @Delete
+    fun deleteSavedGame(game: GameResult)
 
     @Update(onConflict = OnConflictStrategy.IGNORE)
     fun updateSavedGamesDao(game: GameResult)
