@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import br.com.jenny.appgames.data.model.GameResult
 
-@Database(entities = [GameResult::class], version = 5)
+@Database(entities = [GameResult::class], version = 1)
 abstract class GamesDatabase: RoomDatabase() {
     abstract fun gamesDao(): GamesDao
 
@@ -14,7 +14,7 @@ abstract class GamesDatabase: RoomDatabase() {
         @Volatile
         private var INSTANCE: GamesDatabase? = null
 
-        fun getCharacterDatabase(context: Context): GamesDatabase {
+        fun getGameDatabase(context: Context): GamesDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
