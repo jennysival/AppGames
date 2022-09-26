@@ -15,19 +15,9 @@ class GamesUseCase(application: Application) {
     suspend fun getAllGamesNetwork(page: Int, pageSize: Int): ViewState<List<GameResult>>{
         return try {
             val gamesResponse = repository.getAllGamesNetwork(page = page, pageSize = pageSize)
-            repository.insertAllGamesDao(gamesResponse.gameResults)
-            getAllGamesDao()
+            ViewState.Success(gamesResponse.gameResults)
         }catch (e: Exception){
-            getAllGamesDao()
-        }
-    }
-
-    private suspend fun getAllGamesDao(): ViewState<List<GameResult>>{
-        return try {
-            val games = repository.getAllGamesDao()
-            ViewState.Success(games)
-        }catch (e: Exception){
-            ViewState.Error(Exception(Resources.getSystem().getString(R.string.txtErrorLoadGames)))
+            ViewState.Error(Throwable(Resources.getSystem().getString(R.string.txtErrorLoadGames)))
         }
     }
 
@@ -37,6 +27,24 @@ class GamesUseCase(application: Application) {
             ViewState.Success(games)
         }catch (e: Exception){
             ViewState.Error(Exception(Resources.getSystem().getString(R.string.txtErrorLoadSavedGames)))
+        }
+    }
+
+    suspend fun insertSavedGameDao(game: GameResult): ViewState<GameResult>{
+        return try {
+            repository.insertSavedGameDao(game)
+            ViewState.Success(game)
+        }catch (e: Exception){
+            ViewState.Error(Exception(Resources.getSystem().getString(R.string.txtErrorSaveGame)))
+        }
+    }
+
+    suspend fun deleteSavedGameDao(game: GameResult): ViewState<GameResult>{
+        return try {
+            repository.deleteSavedGameDao(game)
+            ViewState.Success(game)
+        }catch (e: Exception){
+            ViewState.Error(Exception(Resources.getSystem().getString(R.string.txtErrorDeleteGame)))
         }
     }
 

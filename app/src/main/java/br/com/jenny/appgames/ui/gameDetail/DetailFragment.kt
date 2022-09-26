@@ -44,6 +44,7 @@ class DetailFragment : Fragment() {
 
         if (getGame != null) {
             game = getGame
+
         } else {
             Toast.makeText(context, getString(R.string.txtErrorLoadGames), Toast.LENGTH_SHORT).show()
         }
@@ -63,10 +64,12 @@ class DetailFragment : Fragment() {
 
     private fun setUpSaveButton() {
         binding.iconSave.setOnClickListener {
+            viewModel.insertSavedGame(game)
             game.saved = !game.saved
             updateSaveIcon()
             viewModel.updateSavedGame(game)
             setUpSavedToast()
+            deleteSavedGame()
         }
     }
 
@@ -77,6 +80,12 @@ class DetailFragment : Fragment() {
                 if (game.saved) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24
             )
         )
+    }
+
+    private fun deleteSavedGame(){
+        if(!game.saved){
+            viewModel.deleteSavedGame(game)
+        }
     }
 
     private fun setUpSavedToast(){
