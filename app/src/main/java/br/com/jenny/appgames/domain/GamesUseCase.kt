@@ -1,13 +1,15 @@
 package br.com.jenny.appgames.domain
 
 import android.app.Application
+import android.content.res.Resources
+import br.com.jenny.appgames.R
 import br.com.jenny.appgames.data.datasource.local.GamesDatabase
 import br.com.jenny.appgames.data.model.GameResult
 import br.com.jenny.appgames.state.ViewState
 import kotlin.Exception
 
 class GamesUseCase(application: Application) {
-    private val gamesDao = GamesDatabase.getCharacterDatabase(application).gamesDao()
+    private val gamesDao = GamesDatabase.getGameDatabase(application).gamesDao()
     private val repository = GamesRepository(gamesDao)
 
     suspend fun getAllGamesNetwork(page: Int, pageSize: Int): ViewState<List<GameResult>>{
@@ -25,7 +27,7 @@ class GamesUseCase(application: Application) {
             val games = repository.getAllGamesDao()
             ViewState.Success(games)
         }catch (e: Exception){
-            ViewState.Error(Exception("Não foi possível carregar os jogos"))
+            ViewState.Error(Exception(Resources.getSystem().getString(R.string.txtErrorLoadGames)))
         }
     }
 
@@ -34,7 +36,7 @@ class GamesUseCase(application: Application) {
             val games = repository.getSavedGamesDao()
             ViewState.Success(games)
         }catch (e: Exception){
-            ViewState.Error(Exception("Não foi possível carregar os jogos salvos"))
+            ViewState.Error(Exception(Resources.getSystem().getString(R.string.txtErrorLoadSavedGames)))
         }
     }
 
@@ -43,7 +45,7 @@ class GamesUseCase(application: Application) {
             repository.updateSavedGame(game)
             ViewState.Success(game)
         }catch (e: Exception){
-            ViewState.Error(Exception("Não foi possível atualizar o jogo"))
+            ViewState.Error(Exception(Resources.getSystem().getString(R.string.txtErrorUpdateGame)))
         }
     }
 }

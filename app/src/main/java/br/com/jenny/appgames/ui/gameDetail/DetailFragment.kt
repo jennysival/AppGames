@@ -45,7 +45,7 @@ class DetailFragment : Fragment() {
         if (getGame != null) {
             game = getGame
         } else {
-            Toast.makeText(context, "Não foi possível carregar o jogo", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.txtErrorLoadGames), Toast.LENGTH_SHORT).show()
         }
     }
 

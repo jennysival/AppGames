@@ -35,9 +35,11 @@ class GamesListAdapter(
 
     override fun getItemCount() = gamesList.size
 
-
     fun updateGamesList(newList: MutableList<GameResult>){
+        var size = gamesList.size
         gamesList = newList
+        var sizeNew = gamesList.size
         notifyDataSetChanged()
+        notifyItemRangeChanged(size, sizeNew)
     }
 }

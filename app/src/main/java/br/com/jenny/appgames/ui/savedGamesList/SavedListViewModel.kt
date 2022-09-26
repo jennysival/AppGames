@@ -1,10 +1,12 @@
 package br.com.jenny.appgames.ui.savedGamesList
 
 import android.app.Application
+import android.content.res.Resources
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import br.com.jenny.appgames.R
 import br.com.jenny.appgames.data.model.GameResult
 import br.com.jenny.appgames.domain.GamesUseCase
 import br.com.jenny.appgames.state.ViewState
@@ -28,7 +30,7 @@ class SavedListViewModel(application: Application): AndroidViewModel(application
                 }
                 _savedListState.value = response
             }catch (e: Exception){
-                _savedListState.value = ViewState.Error(Exception("Não foi possível carregar os jogos salvos"))
+                _savedListState.value = ViewState.Error(Exception(Resources.getSystem().getString(R.string.txtErrorLoadSavedGames)))
             }finally {
                 loading.value = ViewState.Loading(false)
             }

@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.jenny.appgames.data.model.GameResult
 import br.com.jenny.appgames.databinding.GameItemBinding
-import br.com.jenny.appgames.ui.gamesList.GamesListAdapter
 import com.squareup.picasso.Picasso
 
 class SavedListAdapter(
@@ -13,8 +12,8 @@ class SavedListAdapter(
     private val click: (game: GameResult) -> Unit
 ) : RecyclerView.Adapter<SavedListAdapter.ViewHolder>() {
 
-    class ViewHolder(val binding: GameItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun showGame(game: GameResult){
+    class ViewHolder(val binding: GameItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun showGame(game: GameResult) {
             var name = game.name
             binding.tvGameName.text = name
             Picasso.get().load(game.backgroundImage).into(binding.ivGame)
@@ -37,12 +36,8 @@ class SavedListAdapter(
     override fun getItemCount() = savedGamesList.size
 
 
-    fun updateSavedGamesList(newList: MutableList<GameResult>){
+    fun updateSavedGamesList(newList: MutableList<GameResult>) {
         savedGamesList = newList
         notifyDataSetChanged()
     }
-
-
-
-
 }

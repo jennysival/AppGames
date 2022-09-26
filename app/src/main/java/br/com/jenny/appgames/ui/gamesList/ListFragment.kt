@@ -11,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import br.com.jenny.appgames.R
 import br.com.jenny.appgames.data.model.GameResult
 import br.com.jenny.appgames.databinding.FragmentListBinding
@@ -19,6 +20,9 @@ import br.com.jenny.appgames.ui.home.HomeActivity
 import br.com.jenny.appgames.utils.GAME_KEY
 
 class ListFragment : Fragment() {
+
+    var page = 1
+
     private lateinit var binding: FragmentListBinding
 
     private val viewModel: ListViewModel by lazy {
@@ -40,20 +44,21 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpActionBar()
-        viewModel.getAllGamesNetwork(1, 20)
+        viewModel.getAllGamesNetwork(page, 20)
         initObserver()
         setUpRecyclerView()
+        recyclerScrollPagination()
         setUpSavedButton()
     }
 
-    private fun setUpActionBar(){
+    private fun setUpActionBar() {
         (activity as HomeActivity).supportActionBar?.title = getString(R.string.title_app)
         (activity as HomeActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
     private fun initObserver() {
-        viewModel.gamesListState.observe(this.viewLifecycleOwner){
-            when(it){
+        viewModel.gamesListState.observe(this.viewLifecycleOwner) {
+            when (it) {
                 is ViewState.Success -> {
                     adapter.updateGamesList(it.data as MutableList<GameResult>)
                 }
@@ -64,8 +69,8 @@ class ListFragment : Fragment() {
             }
         }
 
-        viewModel.loading.observe(this.viewLifecycleOwner){
-            when(it){
+        viewModel.loading.observe(this.viewLifecycleOwner) {
+            when (it) {
                 is ViewState.Loading -> {
                     binding.pbLoad.isVisible = it.loading == true
                 }
@@ -76,12 +81,13 @@ class ListFragment : Fragment() {
 
     private fun setUpRecyclerView() {
         binding.rvGamesList.adapter = adapter
-        binding.rvGamesList.layoutManager = GridLayoutManager(context,2)
+        binding.rvGamesList.layoutManager = GridLayoutManager(context, 2)
     }
 
     private fun goToGameDetail(game: GameResult) {
         val bundle = bundleOf(GAME_KEY to game)
-        NavHostFragment.findNavController(this).navigate(R.id.action_listFragment_to_detailFragment, bundle)
+        NavHostFragment.findNavController(this)
+            .navigate(R.id.action_listFragment_to_detailFragment, bundle)
     }
 
     private fun setUpSavedButton() {
@@ -89,6 +95,23 @@ class ListFragment : Fragment() {
             NavHostFragment.findNavController(this)
                 .navigate(R.id.action_listFragment_to_savedListFragment)
         }
+    }
+
+    private fun recyclerScrollPagination(){
+        binding.rvGamesList.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val visibleItemCount: Int = GridLayoutManager(context,2).childCount
+                val pastVisibleItem: Int = GridLayoutManager(context,2).findFirstCompletelyVisibleItemPosition()
+                val total = adapter.itemCount
+
+                if(visibleItemCount + pastVisibleItem >= total){
+                    page += 1
+                    viewModel.getAllGamesNetwork(page, 20)
+                }
+
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
     }
 
 }
