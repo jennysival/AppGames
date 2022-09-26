@@ -11,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.jenny.appgames.R
 import br.com.jenny.appgames.data.model.GameResult
@@ -81,7 +82,7 @@ class ListFragment : Fragment() {
 
     private fun setUpRecyclerView() {
         binding.rvGamesList.adapter = adapter
-        binding.rvGamesList.layoutManager = GridLayoutManager(context, 2)
+        binding.rvGamesList.layoutManager = LinearLayoutManager(context)
     }
 
     private fun goToGameDetail(game: GameResult) {
@@ -100,8 +101,8 @@ class ListFragment : Fragment() {
     private fun recyclerScrollPagination(){
         binding.rvGamesList.addOnScrollListener(object : RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                val visibleItemCount: Int = GridLayoutManager(context,2).childCount
-                val pastVisibleItem: Int = GridLayoutManager(context,2).findFirstCompletelyVisibleItemPosition()
+                val visibleItemCount: Int = LinearLayoutManager(context).childCount
+                val pastVisibleItem: Int = LinearLayoutManager(context).findFirstCompletelyVisibleItemPosition()
                 val total = adapter.itemCount
 
                 if(visibleItemCount + pastVisibleItem >= total){
